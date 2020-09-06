@@ -1,0 +1,41 @@
+{
+  "name": "zefi-genesis-wallets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/auth-basic": "^1.4.6",
+    "@octokit/rest": "^18.0.3",
+    "@tronscan/client": "^0.2.67",
+    "big-integer": "^1.6.48",
+    "bitcoinjs-lib": "^5.1.10",
+    "bs58": "^4.0.1",
+    "bs58check": "^2.1.2",
+    "chalk": "^4.1.0",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^5.0.1",
+    "crypto": "^1.0.1",
+    "eccrypto": "^1.1.5",
+    "ethereum-private-key-to-address": "0.0.5",
+    "ethereum-public-key-to-address": "0.0.4",
+    "figlet": "^1.5.0",
+    "inquirer": "^7.3.3",
+    "js-sha256": "^0.9.0",
+    "keccak256": "^1.0.0",
+    "lodash": "^4.17.20",
+    "minimist": "^1.2.5",
+    "noble-ripemd160": "^0.1.1",
+    "node-fetch": "^2.6.0",
+    "ripemd160": "^2.0.2",
+    "simple-git": "^2.17.0",
+    "slp-sdk": "github:ZSLP/slp-sdk#feat/bulk_slp_transactions",
+    "touch": "^3.1.0"
+  }
+}
