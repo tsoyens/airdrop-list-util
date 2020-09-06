@@ -1,4 +1,4 @@
-# zcl-eth-key-converter
+  # zefi-airdrop-list
 Scans Zclassic Public Blockchain For ZeFi Burn
 Addresses at t1ZefiGenesisBootstrapBURNxxxyfs71k
 
