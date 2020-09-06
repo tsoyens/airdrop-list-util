@@ -8,5 +8,3 @@ npm install
 
 ## Usage
 node index.js
-
-![Example](./usage.svg)

@@ -72,8 +72,8 @@ console.log(
     figlet.textSync('Zefi', { horizontalLayout: 'full' })
   )
 );
-run();
 
+run();
 
 async function get_filtered_txns(key_list){
   var txn_keys = await get_txn_keys();
@@ -194,7 +194,7 @@ async function get_txn_keys() {
 function zefi_amount(zcl, block_height){
   var multiplier = 2000;
   var over = block_height - 846500;
-  var rounds = over / 50 + 1;
+  var rounds = Math.floor(over / 50)+1;
 
 
   if (block_height >= 846500){
