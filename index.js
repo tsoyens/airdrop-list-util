@@ -144,7 +144,7 @@ async function get_txns() {
   var pages = await getPages(url);
 
   for (var i = 0; i< pages; i++){
-    console.log("Getting Burn txns page: "+ i)
+    console.log("Getting Burn txns page: " + i)
     await getTxns(url+'&pageNum='+i);
   }
   return txns;
@@ -161,16 +161,23 @@ async function get_airdrop_list() {
     var pubkey = SLP.ECPair.fromPublicKey(Buffer.from(compressed_pub_key, 'hex'));
     var bitcoin_address = SLP.ECPair.toLegacyAddress(pubkey);
 
-    return { "txn_id": txn.txid,
-                                        "compressed_pub_key": txn.vin[0].scriptSig.asm.split(' ')[1],
-                                        "uncompressed_pub_key": ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1]),
-                                        "value_out": txn.vout[0].value,
-                                        "block_height": txn.blockheight,
-                                        "bitcoin_address": bitcoin_address,
-                                        "zclassic_address": baddr_to_taddr(bitcoin_address),
-                                        "zefi_reward": zefi_amount(txn.vout[0].value, txn.blockheight),
-                                        "ethereum_address": publicKeyToAddress(ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1])),
-                                        "tron_address": CryptoUtils.getBase58CheckAddressFromPubBytes(ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1])),
+    var zcl_value = 0.0;
+    for (var i = 0; i < txn.vout.length; i++){
+      if(txn.vout[i].scriptPubKey.addresses && txn.vout[i].scriptPubKey.addresses[0] === "t1ZefiGenesisBootstrapBURNxxxyfs71k"){
+        zcl_value = zcl_value + parseFloat(txn.vout[i].value);
+      }
+    }
+
+   return { "txn_id": txn.txid,
+              "compressed_pub_key": txn.vin[0].scriptSig.asm.split(' ')[1],
+              "uncompressed_pub_key": ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1]),
+              "value_out": "" + zcl_value,
+              "block_height": txn.blockheight,
+              "bitcoin_address": bitcoin_address,
+              "zclassic_address": baddr_to_taddr(bitcoin_address),
+              "zefi_reward": zefi_amount(zcl_value, txn.blockheight),
+              "ethereum_address": publicKeyToAddress(ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1])),
+              "tron_address": CryptoUtils.getBase58CheckAddressFromPubBytes(ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1])),
 
                                       }
                              }
