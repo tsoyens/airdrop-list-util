@@ -177,7 +177,7 @@ async function get_airdrop_list() {
               "zclassic_address": baddr_to_taddr(bitcoin_address),
               "zefi_reward": zefi_amount(zcl_value, txn.blockheight),
               "ethereum_address": publicKeyToAddress(ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1])),
-              "tron_address": CryptoUtils.getBase58CheckAddressFromPubBytes(ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1])),
+              "tron_address": CryptoUtils.getBase58CheckAddressFromPubBytes(Buffer.from(ECPointDecompress(txn.vin[0].scriptSig.asm.split(' ')[1]), 'hex')),
 
                                       }
                              }
